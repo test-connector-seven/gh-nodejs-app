@@ -1,14 +1,13 @@
 {
-  "name": "Dependencies-Test",
-  "private": true,
-  "version": "0.0.1",
+  "name": "secure-nodejs-app",
+  "version": "1.0.0",
+  "description": "A secure Node.js application",
+  "main": "server.js",
   "scripts": {
-    "dev": "webpack --config webpack.config.vendor.js",
-    "postdev": "webpack"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "webpack-merge": "4.1.0",
-    "docker-hub-api": "0.5.1",
-    "axe-core": "4.3.5"
+    "express": "^4.18.2"
   }
 }
