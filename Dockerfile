@@ -1,16 +1,20 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
-RUN mkdir /sensitive_data
-COPY iac-secrets.tf /sensitive_data
-RUN mkdir /misconfiguration
-COPY insecure-db.tf /misconfiguration
-
+# Set working directory
 WORKDIR /usr/src/app
 
-RUN touch /tmp/ready
-COPY ./app/package*.json ./
-RUN npm install
-COPY ./app .
+# Copy package files and install dependencies
+COPY app/package*.json ./
+RUN npm ci --only=production
 
+# Copy application code
+COPY app/ ./
+
+# Run as non-root user for better security
+USER node
+
+# Expose port
 EXPOSE 3000
+
+# Start application
 CMD ["npm", "start"]
